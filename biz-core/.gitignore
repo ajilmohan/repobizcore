@@ -1,0 +1,11 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+target
+.idea
+webapp/resources
+*.iml
+atlassian-ide-plugin.xml
