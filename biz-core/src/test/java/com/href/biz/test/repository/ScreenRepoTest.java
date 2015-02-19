@@ -100,7 +100,7 @@ public class ScreenRepoTest {
 		screenRepo.save(screen);
 	}
 	
-	@Test
+//	@Test
 	@Transactional
 	public void getScreen(){
 		
@@ -108,6 +108,17 @@ public class ScreenRepoTest {
 		if(screen != null){
 			System.out.println(screen.getShows().size());
 			System.out.println(screen.getClazzes().size());
+		}
+	}
+	
+	@Test
+	@Transactional
+	public void getScreenByCinema(){
+		
+		List<Screen> screens = screenRepo.getScreensByCinema("JRH Cinema");
+		if(screens != null){
+			System.out.println(screens.size());
+			
 		}
 	}
 
