@@ -27,9 +27,10 @@ public class SettingEndpoint {
 	@ResponseBody
 	public ResponseEntity<List<MovieDTO>> getMovies(final @PathVariable String screen){
 		
-		List<MovieDTO> movies  = new ArrayList<MovieDTO>();
-		
-		return new ResponseEntity<List<MovieDTO>>(movies, HttpStatus.OK);
+		List<MovieDTO> moviesDto  = new ArrayList<MovieDTO>();
+		List<Movie> movies = movieProxy.findAll();
+		moviesDto = converDomainToDto(movies);
+		return new ResponseEntity<List<MovieDTO>>(moviesDto, HttpStatus.OK);
 		
 	}
 	
@@ -60,6 +61,23 @@ public class SettingEndpoint {
 		
 		
 		return movie;
+	}
+	
+	private List<MovieDTO> converDomainToDto(List<Movie> movies){
+		
+		List<MovieDTO> movieDtos = new ArrayList<MovieDTO>();
+		MovieDTO movieDto = new MovieDTO();
+		
+		for(Movie movie : movies){
+			movieDto = new MovieDTO();
+			movieDto.setDistributor(movie.getDistributor());
+			movieDto.setName(movie.getName());
+			movieDtos.add(movieDto);
+		}
+		
+		
+		return movieDtos;
+		
 	}
 
 }
