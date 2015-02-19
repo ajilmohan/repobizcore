@@ -40,7 +40,12 @@ public class ScreenService implements ScreenProxy {
 	}
 
 	public List<Screen> getScreensByCinema(String cinema) {
-		return screenRepo.getScreensByCinema(cinema);
+		List<Screen> screens = screenRepo.getScreensByCinema(cinema);
+		for(Screen screen : screens ){
+			screen.getShows().size();
+			screen.getClazzes().size();
+		}
+		return screens;
 	}
 
 }

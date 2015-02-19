@@ -1,10 +1,9 @@
 package com.href.biz.endpoint;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.href.biz.domain.Clazz;
+import com.href.biz.domain.DicnShow;
 import com.href.biz.domain.Movie;
 import com.href.biz.domain.Screen;
+import com.href.biz.domain.Show;
+import com.href.biz.dto.ClazzDTO;
+import com.href.biz.dto.DicnClazzDTO;
+import com.href.biz.dto.DicnShowDTO;
 import com.href.biz.dto.MovieDTO;
 import com.href.biz.dto.ScreenDTO;
+import com.href.biz.dto.ShowDTO;
 import com.href.biz.proxy.MovieProxy;
 import com.href.biz.proxy.ScreenProxy;
 
@@ -104,12 +110,44 @@ public class SettingEndpoint {
 		
 		List<ScreenDTO> screenDtos = new ArrayList<ScreenDTO>();
 		ScreenDTO screenDTO = new ScreenDTO();
-		
-		
+		ShowDTO showDto = new ShowDTO();
+		ClazzDTO clDto = new ClazzDTO();
+		List<ClazzDTO> clDtos = new ArrayList<ClazzDTO>();
+		List<ShowDTO> showDtos = new ArrayList<ShowDTO>();
+		DicnShowDTO dShowDto = new DicnShowDTO();
+		DicnClazzDTO dClzDto = new DicnClazzDTO();
 		
 		for(Screen screen  : screens){
 			screenDTO = new ScreenDTO();
-			BeanUtils.copyProperties(screenDTO, screen , new String[] {"clazzes" ,"cinema" , "shows"});
+			screenDTO.setId(screen.getId());
+			//BeanUtils.copyProperties(screenDTO, screen , new String[] {"clazzes" ,"cinema" , "shows"});
+			screenDTO.setName(screen.getName());
+			
+			for(Show show : screen.getShows()){
+				showDto = new ShowDTO();
+				showDto.setId(show.getId());
+				dShowDto.setId(show.getDicnShow().getId());
+				dShowDto.setName(show.getDicnShow().getName());
+				dShowDto.setShowTime(show.getDicnShow().getShowTime());
+				showDto.setDicnShow(dShowDto);
+				showDtos.add(showDto);
+			}
+			
+			for(Clazz clz : screen.getClazzes()){
+				clDto = new ClazzDTO();
+				clDto.setId(clz.getId());
+				dClzDto.setId(clz.getDicnClazz().getId());
+				dClzDto.setName(clz.getDicnClazz().getName());
+				dClzDto.setRate(clz.getDicnClazz().getRate());
+				clDto.setDicnClazz(dClzDto);
+				clDtos.add(clDto);
+				
+			}
+			
+			screenDTO.setClazzes(clDtos);
+			screenDTO.setShows(showDtos);
+			
+			screenDtos.add(screenDTO);
 		}
 		
 		return screenDtos;
