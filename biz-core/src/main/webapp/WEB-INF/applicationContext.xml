@@ -22,6 +22,7 @@
     <import resource="classpath:rest.xml" />
     <import resource="classpath:service.xml" />
     <import resource="classpath:repo.xml" />
+    <import resource="classpath:schedule.xml" />
 
 
 </beans>

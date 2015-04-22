@@ -41,6 +41,9 @@ public class Show implements Serializable{
 	@ManyToOne
     @JoinColumn(name="SCREEN_ID", nullable=false)
 	private Screen screen;
+	
+	@Column(name = "STATUS")
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -72,6 +75,14 @@ public class Show implements Serializable{
 
 	public void setScreen(Screen screen) {
 		this.screen = screen;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

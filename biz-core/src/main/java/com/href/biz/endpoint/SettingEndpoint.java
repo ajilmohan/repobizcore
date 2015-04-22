@@ -1,7 +1,6 @@
 package com.href.biz.endpoint;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.href.biz.domain.Clazz;
-import com.href.biz.domain.DicnShow;
 import com.href.biz.domain.Movie;
 import com.href.biz.domain.Screen;
 import com.href.biz.domain.Show;
