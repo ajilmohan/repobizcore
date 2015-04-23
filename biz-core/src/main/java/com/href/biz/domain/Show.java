@@ -1,6 +1,7 @@
 package com.href.biz.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TRNSHOW")
@@ -44,6 +47,10 @@ public class Show implements Serializable{
 	
 	@Column(name = "STATUS")
 	private String status;
+	
+	@Column(name = "SHOW_DATE")
+	@Temporal(TemporalType.DATE)
+	private Date showDate;
 
 	public Long getId() {
 		return id;
@@ -83,6 +90,14 @@ public class Show implements Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Date getShowDate() {
+		return showDate;
+	}
+
+	public void setShowDate(Date showDate) {
+		this.showDate = showDate;
 	}
 	
 	

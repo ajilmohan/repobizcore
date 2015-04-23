@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.href.biz.domain.Show;
 
-public interface ShowRepo extends JpaRepository<Show, Serializable>  {
+public interface ShowRepo extends ShowRepoCustom , JpaRepository<Show, Serializable>  {
 	
 	
 

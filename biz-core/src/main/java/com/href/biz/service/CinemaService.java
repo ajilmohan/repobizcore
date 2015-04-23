@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.href.biz.domain.Cinema;
+import com.href.biz.domain.Movie;
 import com.href.biz.domain.Screen;
 import com.href.biz.domain.Show;
 import com.href.biz.dto.DicnShowDTO;
+import com.href.biz.dto.MovieDTO;
 import com.href.biz.dto.ScreenDTO;
 import com.href.biz.dto.ShowDTO;
 import com.href.biz.proxy.CinemaProxy;
@@ -61,6 +63,10 @@ public class CinemaService  implements CinemaProxy {
 		logger.info("Service 'getShowsForScreen' invoked . ");
 		Screen screen = screenRepo.findOne(screenId);
 		List<Show> shows = screen.getShows();
+		//Iterate shows to fetch movie object
+		for(Show show : shows){
+			show.getMovie();
+		}
 		List<ShowDTO> showDtos = convertShowToShowSTOs(shows);
 		logger.info("Exit 'getShowsForScreen'. ");
 		return showDtos;
@@ -68,7 +74,6 @@ public class CinemaService  implements CinemaProxy {
 
 	public List<ScreenDTO> getScreensForCinema(long cinemaId) {
 		logger.info("Service 'getScreensForCinema' invoked . ");
-		
 		Cinema cinema = findOne(cinemaId);
 		List<Screen> screens = cinema.getScreens();
 		List<ScreenDTO> dtos = convertScreensToScreeDTOs(screens);
@@ -78,7 +83,6 @@ public class CinemaService  implements CinemaProxy {
 	
 	private List<ScreenDTO> convertScreensToScreeDTOs(List<Screen> screens){
 		logger.info(".convertScreensToScreeDTOs() invoked . ");
-		
 		List<ScreenDTO> screenDtos = new ArrayList<ScreenDTO>();
 		ScreenDTO dto = null;
 		for(Screen screen : screens) {
@@ -105,11 +109,26 @@ public class CinemaService  implements CinemaProxy {
 			dicn.setName(show.getDicnShow().getName());
 			dicn.setShowTime(show.getDicnShow().getShowTime());
 			showDto.setDicnShow(dicn);
+			showDto.setMovie(convertMovieToMovieDTO(show.getMovie()));
 			showDtos.add(showDto);
 		}
 		logger.info("Exit .convertShowToShowSTOs() ");
 		return showDtos;
 		
+	}
+	
+	private MovieDTO convertMovieToMovieDTO(Movie movie){
+		logger.info(".convertMovieToMovieDTO() invoked . ");
+		MovieDTO movieDTO = new MovieDTO();
+		movieDTO.setDistributor(movie.getDistributor());
+		movieDTO.setEndDate(movie.getEndDate());
+		movieDTO.setId(String.valueOf( movie.getId()));
+		movieDTO.setLanguage(movie.getLanguage());
+		movieDTO.setName(movie.getName());
+		movieDTO.setStartDate(movie.getStartDate());
+		movieDTO.setStatus(movie.getStatus());
+		logger.info("Exit .convertMovieToMovieDTO() ");
+		return movieDTO;
 	}
 		
 	}

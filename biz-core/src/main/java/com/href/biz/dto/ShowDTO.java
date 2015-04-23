@@ -1,5 +1,7 @@
 package com.href.biz.dto;
 
+import java.util.Date;
+
 
 public class ShowDTO {
 
@@ -7,6 +9,7 @@ public class ShowDTO {
 	private DicnShowDTO dicnShow;
 	private MovieDTO movie;
 	private ScreenDTO screen;
+	private Date showDate;
 	
 	public Long getId() {
 		return id;
@@ -31,6 +34,12 @@ public class ShowDTO {
 	}
 	public void setScreen(ScreenDTO screen) {
 		this.screen = screen;
+	}
+	public Date getShowDate() {
+		return showDate;
+	}
+	public void setShowDate(Date showDate) {
+		this.showDate = showDate;
 	}
 	
 	

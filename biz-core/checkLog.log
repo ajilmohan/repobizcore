@@ -1,60 +1,296 @@
-09:34:55,121  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@32a5b39c: startup date [Sat Apr 18 09:34:52 IST 2015]; root of context hierarchy
-09:34:55,122  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@490799a9: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-09:34:55,126  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
-11:09:26,611  INFO ContextLoader:273 - Root WebApplicationContext: initialization started
-11:09:26,668  INFO XmlWebApplicationContext:510 - Refreshing Root WebApplicationContext: startup date [Sun Apr 19 11:09:26 IST 2015]; root of context hierarchy
-11:09:26,816  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml]
-11:09:27,072  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [config.xml]
-11:09:27,145  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [rest.xml]
-11:09:27,245  INFO ClassPathBeanDefinitionScanner:222 - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
-11:09:27,450  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [service.xml]
-11:09:27,528  INFO ClassPathBeanDefinitionScanner:222 - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
-11:09:27,545  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [repo.xml]
-11:09:27,745  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [schedule.xml]
-11:09:27,802  INFO ClassPathBeanDefinitionScanner:222 - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
-11:09:28,119  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [repo.properties]
-11:09:28,253  INFO MLog:80 - MLog clients using log4j logging.
-11:09:28,313  INFO C3P0Registry:204 - Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
-11:09:28,436  INFO XmlWebApplicationContext:1374 - Bean 'bizrepDS' of type [class com.mchange.v2.c3p0.ComboPooledDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-11:09:28,469  INFO XmlWebApplicationContext:1374 - Bean 'bizrepJPAVendorAdapter' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-11:09:28,500  INFO LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
-11:09:28,903  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
-11:09:28,919  INFO Version:41 - HHH000412: Hibernate Core {4.0.0.Final}
-11:09:28,924  INFO Environment:239 - HHH000206: hibernate.properties not found
-11:09:28,927  INFO Environment:342 - HHH000021: Bytecode provider name : javassist
-11:09:29,060  INFO Ejb3Configuration:527 - HHH000204: Processing PersistenceUnitInfo [
+17:13:51,304  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:13:51,304  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:13:51,314  INFO TableMetadata:65 - HHH000261: Table found: biz-core.screen
+17:13:51,314  INFO TableMetadata:66 - HHH000037: Columns: [id, cinema_id, status, name]
+17:13:51,314  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk9178b46ca36b6613]
+17:13:51,314  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk9178b46ca36b6613]
+17:13:51,324  INFO TableMetadata:65 - HHH000261: Table found: biz-core.show_history
+17:13:51,324  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, cinema_id, screen_id, show_id, show_date]
+17:13:51,324  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:13:51,324  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:13:51,334  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnclazz
+17:13:51,334  INFO TableMetadata:66 - HHH000037: Columns: [id, screen_id, dicn_id, seats]
+17:13:51,334  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk908f66a866943033, fk908f66a89d136ff9]
+17:13:51,334  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk908f66a866943033, dicn_id, fk908f66a89d136ff9]
+17:13:51,344  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnshow
+17:13:51,344  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, status, screen_id, dicn_id, show_date]
+17:13:51,344  INFO TableMetadata:68 - HHH000108: Foreign keys: [fkebead08d66943033, fkebead08d78a81aa1, fkebead08d85b39690]
+17:13:51,344  INFO TableMetadata:69 - HHH000126: Indexes: [fkebead08d66943033, fkebead08d78a81aa1, primary, dicn_id, fkebead08d85b39690]
+17:13:51,344  INFO SchemaUpdate:240 - HHH000232: Schema update complete
+17:13:51,384  INFO GenericApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:13:51,394  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:13:51,394  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:13:51,404  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@605d3821: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:13:51,604  INFO TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@475478ad]; rollback [false]
+17:15:14,049  INFO TransactionalTestExecutionListener:299 - Committed transaction after test execution for test context [TestContext@4eba7f05 testClass = ShowRepoTest, testInstance = com.href.biz.test.repository.ShowRepoTest@35e949a4, testMethod = getShowOnDate@ShowRepoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@66e1c9a2 testClass = ShowRepoTest, locations = '{classpath:config.xml, classpath:repo.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader']]
+17:15:14,049  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@6ab345e1: startup date [Thu Apr 23 17:13:50 IST 2015]; root of context hierarchy
+17:15:14,049  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@605d3821: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:15:14,049  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:16:55,563  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [config.xml]
+17:16:55,663  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [repo.xml]
+17:16:55,823  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:16:55 IST 2015]; root of context hierarchy
+17:16:55,893  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [repo.properties]
+17:16:55,943  INFO MLog:80 - MLog clients using log4j logging.
+17:16:56,023  INFO C3P0Registry:204 - Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+17:16:56,063  INFO GenericApplicationContext:1374 - Bean 'bizrepDS' of type [class com.mchange.v2.c3p0.ComboPooledDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:16:56,083  INFO GenericApplicationContext:1374 - Bean 'bizrepJPAVendorAdapter' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:16:56,093  INFO LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
+17:16:56,193  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+17:16:56,193  INFO Version:41 - HHH000412: Hibernate Core {4.0.0.Final}
+17:16:56,193  INFO Environment:239 - HHH000206: hibernate.properties not found
+17:16:56,193  INFO Environment:342 - HHH000021: Bytecode provider name : javassist
+17:16:56,214  INFO Ejb3Configuration:527 - HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-11:09:29,704  INFO ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
-11:09:29,830  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 25200, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeby9981lrjdsy14gwb0f|6ec10525, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeby9981lrjdsy14gwb0f|6ec10525, idleConnectionTestPeriod -> 14400, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.56.101:3306/biz-core, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 3, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> select 1;, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
-11:09:30,367  INFO Dialect:120 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-11:09:30,419  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
-11:09:30,435  INFO TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
-11:09:30,445  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
-11:09:31,286  INFO XmlWebApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-11:09:31,348  INFO XmlWebApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-11:09:31,355  INFO XmlWebApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-11:09:31,395  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4ffd92ac: defining beans [propertyConfigurer,cinemaEndpoint,settingEndpoint,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,jacksonObjectMapper,mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,multipartResolver,org.springframework.web.servlet.view.InternalResourceViewResolver#0,cinemaService,movieService,screenService,showHistoryService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,showHistoryTracker,org.springframework.context.annotation.internalAsyncAnnotationProcessor,org.springframework.context.annotation.internalScheduledAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
-11:09:32,553  INFO RequestMappingHandlerMapping:178 - Mapped "{[/cinema/{screenId}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ShowDTO>> com.href.biz.endpoint.CinemaEndpoint.getShowsForScreen(java.lang.Integer)
-11:09:32,555  INFO RequestMappingHandlerMapping:178 - Mapped "{[/cinema/screen/{cinemaId}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ScreenDTO>> com.href.biz.endpoint.CinemaEndpoint.getScreensOfCinema(java.lang.Integer)
-11:09:32,558  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{cinema}/getscreens],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ScreenDTO>> com.href.biz.endpoint.SettingEndpoint.getMovieScreens(java.lang.String)
-11:09:32,559  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{screen}/getmovies],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.MovieDTO>> com.href.biz.endpoint.SettingEndpoint.getMovies(java.lang.String)
-11:09:32,561  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{screen}/savemovie],methods=[PUT],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.lang.String> com.href.biz.endpoint.SettingEndpoint.saveMovie(java.lang.String,com.href.biz.dto.MovieDTO)
-11:09:33,290  INFO ContextLoader:313 - Root WebApplicationContext: initialization completed in 6660 ms
-11:09:33,314  INFO DispatcherServlet:455 - FrameworkServlet 'dispatcher': initialization started
-11:09:33,319  INFO XmlWebApplicationContext:510 - Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Apr 19 11:09:33 IST 2015]; parent: Root WebApplicationContext
-11:09:33,322  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [rest.xml]
-11:09:33,377  INFO ClassPathBeanDefinitionScanner:222 - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
-11:09:33,405  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7891fd5b: defining beans [cinemaEndpoint,settingEndpoint,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,jacksonObjectMapper,mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,multipartResolver,org.springframework.web.servlet.view.InternalResourceViewResolver#0,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@4ffd92ac
-11:09:33,430  INFO RequestMappingHandlerMapping:178 - Mapped "{[/cinema/{screenId}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ShowDTO>> com.href.biz.endpoint.CinemaEndpoint.getShowsForScreen(java.lang.Integer)
-11:09:33,431  INFO RequestMappingHandlerMapping:178 - Mapped "{[/cinema/screen/{cinemaId}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ScreenDTO>> com.href.biz.endpoint.CinemaEndpoint.getScreensOfCinema(java.lang.Integer)
-11:09:33,433  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{cinema}/getscreens],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.ScreenDTO>> com.href.biz.endpoint.SettingEndpoint.getMovieScreens(java.lang.String)
-11:09:33,434  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{screen}/getmovies],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.href.biz.dto.MovieDTO>> com.href.biz.endpoint.SettingEndpoint.getMovies(java.lang.String)
-11:09:33,435  INFO RequestMappingHandlerMapping:178 - Mapped "{[/setting/{screen}/savemovie],methods=[PUT],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<java.lang.String> com.href.biz.endpoint.SettingEndpoint.saveMovie(java.lang.String,com.href.biz.dto.MovieDTO)
-11:09:33,565  INFO DispatcherServlet:474 - FrameworkServlet 'dispatcher': initialization completed in 250 ms
-11:25:12,633  INFO CinemaEndpoint:47 - Endpoint .getScreensOfCinema() '/cinema/screen/{'1' invoked . 
-11:25:12,949  INFO CinemaService:70 - Service 'getScreensForCinema' invoked . 
-11:25:12,952  INFO CinemaService:80 - .convertScreensToScreeDTOs() invoked . 
-11:25:12,988  INFO CinemaService:91 - Exit .convertScreensToScreeDTOs() 
-11:25:12,988  INFO CinemaService:75 - Exit 'getScreensForCinema'. 
-11:25:12,994  INFO CinemaEndpoint:60 - Exit . 
+17:16:56,396  INFO ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+17:16:56,466  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 25200, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge4b9981rufckb1wv5quy|6ab7bdae, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge4b9981rufckb1wv5quy|6ab7bdae, idleConnectionTestPeriod -> 14400, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/biz-core, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 3, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> select 1;, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+17:16:56,616  INFO Dialect:120 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+17:16:56,626  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+17:16:56,636  INFO TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+17:16:56,636  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+17:16:56,806  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+17:16:56,806  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+17:16:56,816  INFO SchemaUpdate:205 - HHH000396: Updating schema
+17:16:56,826  INFO TableMetadata:65 - HHH000261: Table found: biz-core.cinema
+17:16:56,836  INFO TableMetadata:66 - HHH000037: Columns: [id, location, name]
+17:16:56,836  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:16:56,836  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:16:56,836  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnclazz
+17:16:56,836  INFO TableMetadata:66 - HHH000037: Columns: [id, rate, name]
+17:16:56,846  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:16:56,846  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:16:56,846  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnshow
+17:16:56,846  INFO TableMetadata:66 - HHH000037: Columns: [id, name, showtime]
+17:16:56,846  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:16:56,846  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:16:56,856  INFO TableMetadata:65 - HHH000261: Table found: biz-core.movie
+17:16:56,856  INFO TableMetadata:66 - HHH000037: Columns: [id, startdate, status, name, distributor, language, enddate]
+17:16:56,856  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:16:56,856  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:16:56,866  INFO TableMetadata:65 - HHH000261: Table found: biz-core.screen
+17:16:56,866  INFO TableMetadata:66 - HHH000037: Columns: [id, cinema_id, status, name]
+17:16:56,876  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk9178b46ca36b6613]
+17:16:56,876  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk9178b46ca36b6613]
+17:16:56,876  INFO TableMetadata:65 - HHH000261: Table found: biz-core.show_history
+17:16:56,876  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, cinema_id, screen_id, show_id, show_date]
+17:16:56,876  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:16:56,886  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:16:56,896  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnclazz
+17:16:56,896  INFO TableMetadata:66 - HHH000037: Columns: [id, screen_id, dicn_id, seats]
+17:16:56,896  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk908f66a866943033, fk908f66a89d136ff9]
+17:16:56,896  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk908f66a866943033, dicn_id, fk908f66a89d136ff9]
+17:16:56,906  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnshow
+17:16:56,906  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, status, screen_id, dicn_id, show_date]
+17:16:56,906  INFO TableMetadata:68 - HHH000108: Foreign keys: [fkebead08d66943033, fkebead08d78a81aa1, fkebead08d85b39690]
+17:16:56,906  INFO TableMetadata:69 - HHH000126: Indexes: [fkebead08d66943033, fkebead08d78a81aa1, primary, dicn_id, fkebead08d85b39690]
+17:16:56,906  INFO SchemaUpdate:240 - HHH000232: Schema update complete
+17:16:56,936  INFO GenericApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:16:56,946  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:16:56,946  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:16:56,956  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@747c75e6: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:16:57,156  INFO TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@3fc27fe1]; rollback [false]
+17:18:53,760  INFO TransactionalTestExecutionListener:299 - Committed transaction after test execution for test context [TestContext@7c37b4e4 testClass = ShowRepoTest, testInstance = com.href.biz.test.repository.ShowRepoTest@2d452472, testMethod = getShowOnDate@ShowRepoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@165bcf96 testClass = ShowRepoTest, locations = '{classpath:config.xml, classpath:repo.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader']]
+17:18:53,760  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:16:55 IST 2015]; root of context hierarchy
+17:18:53,760  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@747c75e6: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:18:53,771  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:18:58,362  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [config.xml]
+17:18:58,462  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [repo.xml]
+17:18:58,622  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@6ab345e1: startup date [Thu Apr 23 17:18:58 IST 2015]; root of context hierarchy
+17:18:58,692  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [repo.properties]
+17:18:58,752  INFO MLog:80 - MLog clients using log4j logging.
+17:18:58,833  INFO C3P0Registry:204 - Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+17:18:58,883  INFO GenericApplicationContext:1374 - Bean 'bizrepDS' of type [class com.mchange.v2.c3p0.ComboPooledDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:18:58,893  INFO GenericApplicationContext:1374 - Bean 'bizrepJPAVendorAdapter' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:18:58,903  INFO LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
+17:18:59,003  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+17:18:59,004  INFO Version:41 - HHH000412: Hibernate Core {4.0.0.Final}
+17:18:59,004  INFO Environment:239 - HHH000206: hibernate.properties not found
+17:18:59,004  INFO Environment:342 - HHH000021: Bytecode provider name : javassist
+17:18:59,034  INFO Ejb3Configuration:527 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+17:18:59,214  INFO ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+17:18:59,264  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 25200, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge4b9981ruhzbo12rlmu1|225a8897, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge4b9981ruhzbo12rlmu1|225a8897, idleConnectionTestPeriod -> 14400, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/biz-core, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 3, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> select 1;, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+17:18:59,424  INFO Dialect:120 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+17:18:59,434  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+17:18:59,444  INFO TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+17:18:59,444  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+17:18:59,644  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+17:18:59,644  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+17:18:59,644  INFO SchemaUpdate:205 - HHH000396: Updating schema
+17:18:59,664  INFO TableMetadata:65 - HHH000261: Table found: biz-core.cinema
+17:18:59,664  INFO TableMetadata:66 - HHH000037: Columns: [id, location, name]
+17:18:59,664  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:18:59,664  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:18:59,664  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnclazz
+17:18:59,664  INFO TableMetadata:66 - HHH000037: Columns: [id, rate, name]
+17:18:59,664  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:18:59,664  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:18:59,674  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnshow
+17:18:59,674  INFO TableMetadata:66 - HHH000037: Columns: [id, name, showtime]
+17:18:59,674  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:18:59,674  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:18:59,684  INFO TableMetadata:65 - HHH000261: Table found: biz-core.movie
+17:18:59,684  INFO TableMetadata:66 - HHH000037: Columns: [id, startdate, status, name, distributor, language, enddate]
+17:18:59,684  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:18:59,684  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:18:59,694  INFO TableMetadata:65 - HHH000261: Table found: biz-core.screen
+17:18:59,704  INFO TableMetadata:66 - HHH000037: Columns: [id, cinema_id, status, name]
+17:18:59,704  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk9178b46ca36b6613]
+17:18:59,704  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk9178b46ca36b6613]
+17:18:59,714  INFO TableMetadata:65 - HHH000261: Table found: biz-core.show_history
+17:18:59,714  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, cinema_id, screen_id, show_id, show_date]
+17:18:59,714  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:18:59,714  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:18:59,714  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnclazz
+17:18:59,723  INFO TableMetadata:66 - HHH000037: Columns: [id, screen_id, dicn_id, seats]
+17:18:59,723  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk908f66a866943033, fk908f66a89d136ff9]
+17:18:59,723  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk908f66a866943033, dicn_id, fk908f66a89d136ff9]
+17:18:59,733  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnshow
+17:18:59,733  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, status, screen_id, dicn_id, show_date]
+17:18:59,733  INFO TableMetadata:68 - HHH000108: Foreign keys: [fkebead08d66943033, fkebead08d78a81aa1, fkebead08d85b39690]
+17:18:59,733  INFO TableMetadata:69 - HHH000126: Indexes: [fkebead08d66943033, fkebead08d78a81aa1, primary, dicn_id, fkebead08d85b39690]
+17:18:59,733  INFO SchemaUpdate:240 - HHH000232: Schema update complete
+17:18:59,763  INFO GenericApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:18:59,773  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:18:59,773  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:18:59,783  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5ebc404e: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:18:59,983  INFO TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@2e2d671e]; rollback [false]
+17:19:14,838  INFO TransactionalTestExecutionListener:299 - Committed transaction after test execution for test context [TestContext@6bf886b1 testClass = ShowRepoTest, testInstance = com.href.biz.test.repository.ShowRepoTest@95305d8, testMethod = getShowOnDate@ShowRepoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@29a4acb0 testClass = ShowRepoTest, locations = '{classpath:config.xml, classpath:repo.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader']]
+17:19:14,848  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@6ab345e1: startup date [Thu Apr 23 17:18:58 IST 2015]; root of context hierarchy
+17:19:14,848  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5ebc404e: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:19:14,848  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:21:12,169  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [config.xml]
+17:21:12,269  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [repo.xml]
+17:21:12,429  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:21:12 IST 2015]; root of context hierarchy
+17:21:12,509  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [repo.properties]
+17:21:12,559  INFO MLog:80 - MLog clients using log4j logging.
+17:21:12,639  INFO C3P0Registry:204 - Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+17:21:12,679  INFO GenericApplicationContext:1374 - Bean 'bizrepDS' of type [class com.mchange.v2.c3p0.ComboPooledDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:21:12,689  INFO GenericApplicationContext:1374 - Bean 'bizrepJPAVendorAdapter' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:21:12,699  INFO LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
+17:21:12,799  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+17:21:12,800  INFO Version:41 - HHH000412: Hibernate Core {4.0.0.Final}
+17:21:12,800  INFO Environment:239 - HHH000206: hibernate.properties not found
+17:21:12,800  INFO Environment:342 - HHH000021: Bytecode provider name : javassist
+17:21:12,830  INFO Ejb3Configuration:527 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+17:21:13,020  INFO ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+17:21:13,080  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 25200, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge4b9981rukukt11w1qrn|7ceb9c67, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge4b9981rukukt11w1qrn|7ceb9c67, idleConnectionTestPeriod -> 14400, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/biz-core, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 3, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> select 1;, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+17:21:13,240  INFO Dialect:120 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+17:21:13,240  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+17:21:13,250  INFO TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+17:21:13,260  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+17:21:13,429  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+17:21:13,429  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+17:21:13,429  INFO SchemaUpdate:205 - HHH000396: Updating schema
+17:21:13,449  INFO TableMetadata:65 - HHH000261: Table found: biz-core.cinema
+17:21:13,449  INFO TableMetadata:66 - HHH000037: Columns: [id, location, name]
+17:21:13,449  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:21:13,449  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:21:13,459  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnclazz
+17:21:13,459  INFO TableMetadata:66 - HHH000037: Columns: [id, rate, name]
+17:21:13,459  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:21:13,459  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:21:13,469  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnshow
+17:21:13,469  INFO TableMetadata:66 - HHH000037: Columns: [id, name, showtime]
+17:21:13,469  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:21:13,469  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:21:13,479  INFO TableMetadata:65 - HHH000261: Table found: biz-core.movie
+17:21:13,479  INFO TableMetadata:66 - HHH000037: Columns: [id, startdate, status, name, distributor, language, enddate]
+17:21:13,479  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:21:13,479  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:21:13,489  INFO TableMetadata:65 - HHH000261: Table found: biz-core.screen
+17:21:13,489  INFO TableMetadata:66 - HHH000037: Columns: [id, cinema_id, status, name]
+17:21:13,489  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk9178b46ca36b6613]
+17:21:13,489  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk9178b46ca36b6613]
+17:21:13,499  INFO TableMetadata:65 - HHH000261: Table found: biz-core.show_history
+17:21:13,499  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, cinema_id, screen_id, show_id, show_date]
+17:21:13,499  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:21:13,499  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:21:13,509  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnclazz
+17:21:13,509  INFO TableMetadata:66 - HHH000037: Columns: [id, screen_id, dicn_id, seats]
+17:21:13,509  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk908f66a866943033, fk908f66a89d136ff9]
+17:21:13,509  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk908f66a866943033, dicn_id, fk908f66a89d136ff9]
+17:21:13,519  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnshow
+17:21:13,519  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, status, screen_id, dicn_id, show_date]
+17:21:13,519  INFO TableMetadata:68 - HHH000108: Foreign keys: [fkebead08d66943033, fkebead08d78a81aa1, fkebead08d85b39690]
+17:21:13,519  INFO TableMetadata:69 - HHH000126: Indexes: [fkebead08d66943033, fkebead08d78a81aa1, primary, dicn_id, fkebead08d85b39690]
+17:21:13,519  INFO SchemaUpdate:240 - HHH000232: Schema update complete
+17:21:13,549  INFO GenericApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:21:13,559  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:21:13,559  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:21:13,569  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3744bd3: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:21:13,769  INFO TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@7dac363c]; rollback [false]
+17:21:42,452  INFO TransactionalTestExecutionListener:299 - Committed transaction after test execution for test context [TestContext@356122dc testClass = ShowRepoTest, testInstance = com.href.biz.test.repository.ShowRepoTest@7c37b4e4, testMethod = getShowOnDate@ShowRepoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@2d452472 testClass = ShowRepoTest, locations = '{classpath:config.xml, classpath:repo.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader']]
+17:21:42,452  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:21:12 IST 2015]; root of context hierarchy
+17:21:42,452  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3744bd3: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:21:42,452  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
+17:22:03,409  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [config.xml]
+17:22:03,499  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [repo.xml]
+17:22:03,648  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:22:03 IST 2015]; root of context hierarchy
+17:22:03,728  INFO PropertyPlaceholderConfigurer:172 - Loading properties file from class path resource [repo.properties]
+17:22:03,788  INFO MLog:80 - MLog clients using log4j logging.
+17:22:03,858  INFO C3P0Registry:204 - Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+17:22:03,898  INFO GenericApplicationContext:1374 - Bean 'bizrepDS' of type [class com.mchange.v2.c3p0.ComboPooledDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:22:03,908  INFO GenericApplicationContext:1374 - Bean 'bizrepJPAVendorAdapter' of type [class org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:22:03,918  INFO LocalContainerEntityManagerFactoryBean:285 - Building JPA container EntityManagerFactory for persistence unit 'default'
+17:22:04,028  INFO Version:37 - HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+17:22:04,028  INFO Version:41 - HHH000412: Hibernate Core {4.0.0.Final}
+17:22:04,029  INFO Environment:239 - HHH000206: hibernate.properties not found
+17:22:04,029  INFO Environment:342 - HHH000021: Bytecode provider name : javassist
+17:22:04,049  INFO Ejb3Configuration:527 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+17:22:04,239  INFO ConnectionProviderInitiator:186 - HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+17:22:04,299  INFO AbstractPoolBackedDataSource:462 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 25200, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge4b9981ruly3kgm6ooa|1135a18e, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge4b9981ruly3kgm6ooa|1135a18e, idleConnectionTestPeriod -> 14400, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/biz-core, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 3, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> select 1;, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+17:22:04,439  INFO Dialect:120 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+17:22:04,449  INFO LobCreatorBuilder:120 - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+17:22:04,459  INFO TransactionFactoryInitiator:73 - HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+17:22:04,469  INFO ASTQueryTranslatorFactory:48 - HHH000397: Using ASTQueryTranslatorFactory
+17:22:04,639  INFO SchemaUpdate:182 - HHH000228: Running hbm2ddl schema update
+17:22:04,639  INFO SchemaUpdate:193 - HHH000102: Fetching database metadata
+17:22:04,649  INFO SchemaUpdate:205 - HHH000396: Updating schema
+17:22:04,659  INFO TableMetadata:65 - HHH000261: Table found: biz-core.cinema
+17:22:04,659  INFO TableMetadata:66 - HHH000037: Columns: [id, location, name]
+17:22:04,659  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:22:04,659  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:22:04,669  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnclazz
+17:22:04,669  INFO TableMetadata:66 - HHH000037: Columns: [id, rate, name]
+17:22:04,669  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:22:04,669  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:22:04,679  INFO TableMetadata:65 - HHH000261: Table found: biz-core.dicnshow
+17:22:04,679  INFO TableMetadata:66 - HHH000037: Columns: [id, name, showtime]
+17:22:04,679  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:22:04,679  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:22:04,680  INFO TableMetadata:65 - HHH000261: Table found: biz-core.movie
+17:22:04,680  INFO TableMetadata:66 - HHH000037: Columns: [id, startdate, status, name, distributor, language, enddate]
+17:22:04,680  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:22:04,680  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:22:04,700  INFO TableMetadata:65 - HHH000261: Table found: biz-core.screen
+17:22:04,700  INFO TableMetadata:66 - HHH000037: Columns: [id, cinema_id, status, name]
+17:22:04,700  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk9178b46ca36b6613]
+17:22:04,700  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk9178b46ca36b6613]
+17:22:04,710  INFO TableMetadata:65 - HHH000261: Table found: biz-core.show_history
+17:22:04,710  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, cinema_id, screen_id, show_id, show_date]
+17:22:04,710  INFO TableMetadata:68 - HHH000108: Foreign keys: []
+17:22:04,710  INFO TableMetadata:69 - HHH000126: Indexes: [primary]
+17:22:04,720  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnclazz
+17:22:04,720  INFO TableMetadata:66 - HHH000037: Columns: [id, screen_id, dicn_id, seats]
+17:22:04,720  INFO TableMetadata:68 - HHH000108: Foreign keys: [fk908f66a866943033, fk908f66a89d136ff9]
+17:22:04,720  INFO TableMetadata:69 - HHH000126: Indexes: [primary, fk908f66a866943033, dicn_id, fk908f66a89d136ff9]
+17:22:04,730  INFO TableMetadata:65 - HHH000261: Table found: biz-core.trnshow
+17:22:04,730  INFO TableMetadata:66 - HHH000037: Columns: [id, movie_id, status, screen_id, dicn_id, show_date]
+17:22:04,730  INFO TableMetadata:68 - HHH000108: Foreign keys: [fkebead08d66943033, fkebead08d78a81aa1, fkebead08d85b39690]
+17:22:04,730  INFO TableMetadata:69 - HHH000126: Indexes: [fkebead08d66943033, fkebead08d78a81aa1, primary, dicn_id, fkebead08d85b39690]
+17:22:04,730  INFO SchemaUpdate:240 - HHH000232: Schema update complete
+17:22:04,751  INFO GenericApplicationContext:1374 - Bean 'bizrep' of type [class org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:22:04,771  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' of type [class org.springframework.transaction.annotation.AnnotationTransactionAttributeSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:22:04,781  INFO GenericApplicationContext:1374 - Bean 'org.springframework.transaction.config.internalTransactionAdvisor' of type [class org.springframework.transaction.interceptor.BeanFactoryTransactionAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+17:22:04,781  INFO DefaultListableBeanFactory:596 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2c7f8123: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:22:04,971  INFO TransactionalTestExecutionListener:279 - Began transaction (1): transaction manager [org.springframework.orm.jpa.JpaTransactionManager@74ed2d3]; rollback [false]
+17:22:31,424  INFO TransactionalTestExecutionListener:299 - Committed transaction after test execution for test context [TestContext@511f8a0e testClass = ShowRepoTest, testInstance = com.href.biz.test.repository.ShowRepoTest@6da0c6bd, testMethod = getShowOnDate@ShowRepoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@5657da85 testClass = ShowRepoTest, locations = '{classpath:config.xml, classpath:repo.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader']]
+17:22:31,424  INFO GenericApplicationContext:1042 - Closing org.springframework.context.support.GenericApplicationContext@18b8c068: startup date [Thu Apr 23 17:22:03 IST 2015]; root of context hierarchy
+17:22:31,424  INFO DefaultListableBeanFactory:444 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2c7f8123: defining beans [propertyConfigurer,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,showHistoryRepo,dicnClazzRepo,showRepoImpl,showRepo,dicnShowRepo,screenRepo,clazzRepo,movieRepo,cinemaRepo,org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0,org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor#0,org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor#0,transactionManager,bizrepDS,bizrepJPAVendorAdapter,bizrep,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+17:22:31,424  INFO LocalContainerEntityManagerFactoryBean:441 - Closing JPA EntityManagerFactory for persistence unit 'default'
