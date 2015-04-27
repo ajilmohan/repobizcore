@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,12 +21,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.href.biz.domain.DicnShow;
 import com.href.biz.domain.Movie;
+import com.href.biz.domain.Screen;
 import com.href.biz.domain.Show;
 import com.href.biz.dto.DicnShowDTO;
 import com.href.biz.dto.ShowDTO;
 import com.href.biz.repository.DicnShowRepo;
 import com.href.biz.repository.MovieRepo;
 import com.href.biz.repository.ShowRepo;
+import com.href.biz.util.BizUtil;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -70,22 +73,24 @@ public class ShowRepoTest {
 		
 	}
 	
-	//@Test
+	@Test
 	@Transactional
 	@Rollback(false)
 	public void getShowOnDate(){
 		
-		Date date = new Date();
+		Date date = BizUtil.convertStringToDate("2015-04-23");
+		Screen screen = new Screen();
+		screen.setId(1L);
 		
-		List<Show> shows = showRepo.getShowsForADate(date);
+		List<Show> shows = showRepo.getShowsForADate(date,screen);
 		
 		if(shows != null){
-			
+			System.out.println(shows.size());
 		}
 		
 	}
 	
-	@Test
+//	@Test
 	@Transactional
 	@Rollback(false)
 	public void beanCopyTest(){
@@ -97,14 +102,14 @@ public class ShowRepoTest {
 		DicnShowDTO dicShowDto = new DicnShowDTO();
 		for(Show show : shows) {
 			
-			try {
-				BeanUtils.copyProperties(dicShowDto, show.getDicnShow());
-				System.out.println(dto.toString());
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
+				//BeanUtils.copyProperties(dicShowDto, show.getDicnShow());
+				String[] ignore = {"dicnShow","movie","screen"};
+				try {
+					org.springframework.beans.BeanUtils.copyProperties(show, dto,ignore);
+					System.out.println(dto.toString());
+				} catch (BeansException e) {
+					e.printStackTrace();
+				}
 			
 		}
 		

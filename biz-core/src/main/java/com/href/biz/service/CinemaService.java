@@ -122,7 +122,7 @@ public class CinemaService  implements CinemaProxy {
 		MovieDTO movieDTO = new MovieDTO();
 		movieDTO.setDistributor(movie.getDistributor());
 		movieDTO.setEndDate(movie.getEndDate());
-		movieDTO.setId(String.valueOf( movie.getId()));
+		movieDTO.setId( movie.getId());
 		movieDTO.setLanguage(movie.getLanguage());
 		movieDTO.setName(movie.getName());
 		movieDTO.setStartDate(movie.getStartDate());
