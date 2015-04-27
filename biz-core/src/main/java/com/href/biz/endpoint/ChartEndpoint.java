@@ -66,7 +66,7 @@ public class ChartEndpoint {
 	 * @return 
 	 */
 	
-	@RequestMapping(value = "/cinema/chart/movies", method = RequestMethod.GET)
+	@RequestMapping(value = "/cinema/chart/movies", method = RequestMethod.GET )
 	@ResponseBody
 	public ResponseEntity<List<MovieDTO>> getMoviesForCharting(){
 		logger.info("Endpoint .getMoviesForCharting() '/cinema/chart/movies invoked . ");
